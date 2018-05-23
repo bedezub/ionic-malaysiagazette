@@ -1,28 +1,29 @@
 // Written by Dr. Zub
 import { Component } from '@angular/core';
-import { NavController, App } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
 import { RssProvider } from '../../providers/rss/rss';
 import { ReadPage } from '../read/read';
 import { HttpParams, HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-nasional',
+  templateUrl: 'nasional.html',
 })
-export class HomePage {
+export class NasionalPage {
 
-  rssUtama: any = [];
-  offset = "20";
-  nextOffset: number;
+  nextOffset: any;
+  rssNasional: any = [];
+  offset = '20';
 
   constructor(
-    public navCtrl: NavController,
+    public navCtrl: NavController, 
+    public navParams: NavParams,
     public rss: RssProvider,
     public app: App,
-    public http: HttpClient
+    public http: HttpClient,
   ) {
-    this.rss.getUtama().subscribe(rssFeed => {
-      this.rssUtama = rssFeed;
+    this.rss.getNasional().subscribe(rssFeed => {
+      this.rssNasional = rssFeed;
     });
   }
 
@@ -34,14 +35,14 @@ export class HomePage {
   doInfinite(load?) {
     let response: any;
     let params = new HttpParams();
-    params = params.append('per_page', '20');
-    params = params.append('categories', '32');
+    params = params.append('per_page', '10');
+    params = params.append('categories', '2');
     params = params.append('_embed', '');
     params = params.append('offset', this.offset);
     response = this.http.get('http://malaysiagazette.com/v2/wp-json/wp/v2/posts', {params: params});
     
     response.subscribe(rssFeed => {
-    this.rssUtama = this.rssUtama.concat(rssFeed);
+    this.rssNasional = this.rssNasional.concat(rssFeed);
       if(load) {
         this.nextOffset = parseInt(this.offset) + 10;
         this.offset = this.nextOffset.toString();
@@ -49,4 +50,8 @@ export class HomePage {
       }
     });
   }
+
+  ionViewDidLoad() {
+  }
+
 }

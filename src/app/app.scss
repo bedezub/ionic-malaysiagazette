@@ -14,3 +14,44 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.background {
+    background-color: #f4f4f4;
+}
+.details {
+    display: flex;
+    flex-direction: row;
+    
+    .details-date {
+        flex: 11;
+        padding-left: 20px;
+    }
+
+    .details-icon {
+        flex: 1;
+        text-align: right;
+        min-width: 36px;
+        padding: 5px, 5px, 5px, 5px;
+    }
+
+    .imgIcon {
+        flex: 1;
+        text-align: right;
+        padding: 5px, 5px, 5px, 5px;
+    }
+}
+
+.details-box {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.feed-title {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.feed {
+    margin-bottom: 1em;
+    background-color: #ffffff;
+}
+

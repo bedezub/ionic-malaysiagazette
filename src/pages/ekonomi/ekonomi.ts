@@ -1,28 +1,29 @@
 // Written by Dr. Zub
 import { Component } from '@angular/core';
-import { NavController, App } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
 import { RssProvider } from '../../providers/rss/rss';
-import { ReadPage } from '../read/read';
 import { HttpParams, HttpClient } from '@angular/common/http';
+import { ReadPage } from '../read/read';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-ekonomi',
+  templateUrl: 'ekonomi.html',
 })
-export class HomePage {
+export class EkonomiPage {
 
-  rssUtama: any = [];
-  offset = "20";
   nextOffset: number;
+  rssEkonomi: any = [];
+  offset = '20';
 
   constructor(
-    public navCtrl: NavController,
+    public navCtrl: NavController, 
+    public navParams: NavParams,
     public rss: RssProvider,
     public app: App,
     public http: HttpClient
   ) {
-    this.rss.getUtama().subscribe(rssFeed => {
-      this.rssUtama = rssFeed;
+    this.rss.getEkonomi().subscribe(rssFeed => {
+      this.rssEkonomi = rssFeed;
     });
   }
 
@@ -41,7 +42,7 @@ export class HomePage {
     response = this.http.get('http://malaysiagazette.com/v2/wp-json/wp/v2/posts', {params: params});
     
     response.subscribe(rssFeed => {
-    this.rssUtama = this.rssUtama.concat(rssFeed);
+    this.rssEkonomi = this.rssEkonomi.concat(rssFeed);
       if(load) {
         this.nextOffset = parseInt(this.offset) + 10;
         this.offset = this.nextOffset.toString();
@@ -49,4 +50,8 @@ export class HomePage {
       }
     });
   }
+
+  ionViewDidLoad() {
+  }
+
 }

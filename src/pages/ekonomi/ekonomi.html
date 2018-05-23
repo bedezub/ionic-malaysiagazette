@@ -1,7 +1,7 @@
 <!-- Written by Dr. Zub -->
 <ion-content class="background">
     <ion-list>
-        <div class="feed" *ngFor="let rssData of rssUtama">
+        <div class="feed" *ngFor="let rssData of rssEkonomi">
             <div (click)="openRead(rssData)">
                 <div><img class="feed-image" src="{{rssData._embedded['wp:featuredmedia']['0'].source_url}}" style="width:auto;height:auto"/></div>
                 <h6><div class="feed-title" [innerHTML]="rssData.title.rendered"></div></h6>

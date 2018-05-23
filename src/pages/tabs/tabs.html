@@ -1,5 +1,16 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
-</ion-tabs>
+<!-- Written by Dr. Zub -->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+        <img src="assets/imgs/navbar.png" width="150px"/>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <super-tabs class="supertabs" selectedTabIndex="{{id}}" scrollTabs="true" toolbarBackground="white" indicatorColor="primary">
+        <super-tab *ngFor="let tab of tabs" [root]="tab.root" [title]="tab.title"></super-tab>
+    </super-tabs>
+</ion-content>
