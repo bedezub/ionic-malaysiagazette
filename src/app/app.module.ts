@@ -15,7 +15,9 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { CinaPage } from '../pages/cina/cina';
 import { EkonomiPage } from '../pages/ekonomi/ekonomi';
+import { GaleriPage } from '../pages/galeri/galeri';
 import { HomePage } from '../pages/home/home';
+import { MgtvPage } from '../pages/mgtv/mgtv';
 import { NasionalPage } from '../pages/nasional/nasional';
 import { PolitikPage } from '../pages/politik/politik';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -38,8 +40,10 @@ import { MomentjsPipe } from '../pipes/momentjs/momentjs';
     ContactPage,
     DuniaPage,
     EkonomiPage,
+    GaleriPage,
     HomePage,
     MomentjsPipe,
+    MgtvPage,
     NasionalPage,
     PolitikPage,
     ReadPage,
@@ -61,7 +65,9 @@ import { MomentjsPipe } from '../pipes/momentjs/momentjs';
     CinaPage,
     DuniaPage,
     EkonomiPage,
+    GaleriPage,
     HomePage,
+    MgtvPage,
     NasionalPage,
     PolitikPage,
     ReadPage,

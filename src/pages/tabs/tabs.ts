@@ -9,6 +9,8 @@ import { EkonomiPage } from '../ekonomi/ekonomi';
 import { DuniaPage } from '../dunia/dunia';
 import { SeniPage } from '../seni/seni';
 import { CinaPage } from '../cina/cina';
+import { MgtvPage } from '../mgtv/mgtv';
+import { GaleriPage } from '../galeri/galeri';
 
 @Component({
   selector: 'page-tabs',
@@ -24,6 +26,8 @@ export class TabsPage {
   tab5Root = DuniaPage;
   tab6Root = SeniPage;
   tab7Root = CinaPage;
+  tab8Root = MgtvPage;
+  tab9Root = GaleriPage;
   
   constructor(
     public navCtrl: NavController, 
@@ -37,6 +41,8 @@ export class TabsPage {
       {root: this.tab5Root, title: "Dunia"},
       {root: this.tab6Root, title: "Seni Hidup"},
       {root: this.tab7Root, title: "Akhbar Cina"},
+      {root: this.tab8Root, title: "MGTV"},
+      {root: this.tab9Root, title: "Galeri"}
     ];
   }
 

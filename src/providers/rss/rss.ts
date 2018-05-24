@@ -15,6 +15,8 @@ export class RssProvider {
     this.getEkonomi();
     this.getSeni();
     this.getCina();
+    this.getMgtv();
+    this.getGaleri();
   }
   
   // Call Utama rss from WP API
@@ -93,4 +95,27 @@ export class RssProvider {
     response = this.http.get('http://malaysiagazette.com/v2/wp-json/wp/v2/posts', {params: params});
     return response;
   }
+
+  // Call Utama rss from WP API
+  getMgtv() {
+    let response: any;
+    let params = new HttpParams();
+    params = params.append('per_page', '20');
+    params = params.append('categories', '11');
+    params = params.append('_embed', '');
+    response = this.http.get('http://malaysiagazette.com/v2/wp-json/wp/v2/posts', {params: params});
+    return response;
+  }
+  
+  // Call Utama rss from WP API
+  getGaleri() {
+    let response: any;
+    let params = new HttpParams();
+    params = params.append('per_page', '20');
+    params = params.append('categories', '23');
+    params = params.append('_embed', '');
+    response = this.http.get('http://malaysiagazette.com/v2/wp-json/wp/v2/posts', {params: params});
+    return response;
+  }
+
 }
