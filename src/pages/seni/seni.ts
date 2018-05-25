@@ -11,6 +11,7 @@ import { ReadPage } from '../read/read';
 })
 export class SeniPage {
 
+  title: any;
   nextOffset: number;
   rssSeni: any = [];
   offset = '20';
@@ -28,7 +29,8 @@ export class SeniPage {
   }
 
   openRead(rssData) {
-    this.app.getRootNav().push(ReadPage, {rssData: rssData});
+    this.title = 'Seni Hidup';
+    this.app.getRootNav().push(ReadPage, {rssData: rssData, title: this.title});
   }
 
   // Infinity Load method

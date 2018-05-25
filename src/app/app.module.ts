@@ -21,6 +21,7 @@ import { MgtvPage } from '../pages/mgtv/mgtv';
 import { NasionalPage } from '../pages/nasional/nasional';
 import { PolitikPage } from '../pages/politik/politik';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ReadGaleriPage } from '../pages/read-galeri/read-galeri';
 import { ReadPage } from '../pages/read/read';
 import { DuniaPage } from '../pages/dunia/dunia';
 import { SeniPage } from '../pages/seni/seni';
@@ -31,6 +32,7 @@ import { RssProvider } from '../providers/rss/rss';
 
 // Pipes
 import { MomentjsPipe } from '../pipes/momentjs/momentjs';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { MomentjsPipe } from '../pipes/momentjs/momentjs';
     MgtvPage,
     NasionalPage,
     PolitikPage,
+    ReadGaleriPage,
     ReadPage,
     SeniPage,
     TabsPage,
@@ -70,6 +73,7 @@ import { MomentjsPipe } from '../pipes/momentjs/momentjs';
     MgtvPage,
     NasionalPage,
     PolitikPage,
+    ReadGaleriPage,
     ReadPage,
     SeniPage,
     TabsPage

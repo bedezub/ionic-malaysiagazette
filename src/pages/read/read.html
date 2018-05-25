@@ -5,6 +5,8 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content padding>
-
+<ion-content>
+    <div><h4 class="content-title" [innerHTML]="rssData.title.rendered"></h4></div>
+    <div *ngIf="rssData._embedded['wp:featuredmedia'] != null"><img class="feed-image" src="{{rssData._embedded['wp:featuredmedia']['0'].source_url}}" /></div>
+    <div class="content-description" [innerHTML]="rssData.content.rendered"></div>
 </ion-content>

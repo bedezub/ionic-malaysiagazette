@@ -11,6 +11,7 @@ import { ReadPage } from '../read/read';
 })
 export class EkonomiPage {
 
+  title: string;
   nextOffset: number;
   rssEkonomi: any = [];
   offset = '20';
@@ -28,7 +29,8 @@ export class EkonomiPage {
   }
 
   openRead(rssData) {
-    this.app.getRootNav().push(ReadPage, {rssData: rssData});
+    this.title = 'Ekonomi';
+    this.app.getRootNav().push(ReadPage, {rssData: rssData, title: this.title});
   }
 
   // Infinity Load method

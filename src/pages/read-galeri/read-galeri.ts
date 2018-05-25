@@ -1,34 +1,31 @@
 // Written by Dr. Zub
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { SuperTabsController } from 'ionic2-super-tabs';
 import * as $ from "jquery";
 
 @Component({
-  selector: 'page-read',
-  templateUrl: 'read.html',
+  selector: 'page-read-galeri',
+  templateUrl: 'read-galeri.html',
 })
-export class ReadPage {
+export class ReadGaleriPage {
 
-  title: any;
   rssData: any;
+  title: any;
+  images = [];
 
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams,
-    public superTabsCtrl: SuperTabsController
+    public navParams: NavParams
   ) {
-    this.superTabsCtrl.showToolbar(false);
     this.rssData = this.navParams.get('rssData');
     this.title = this.navParams.get('title');
     console.log(this.rssData);
   }
 
   ionViewDidLoad() {
-  }
-
-  ionViewWillLeave() {
-    this.superTabsCtrl.showToolbar(true);
+    this.images = Array.prototype.slice.call(document.getElementsByClassName('wp-caption alignnone'));
+    console.log(this.images);
+    $('#invisible').hide();
   }
 
 }

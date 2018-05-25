@@ -4,6 +4,7 @@ import { NavController, NavParams, App } from 'ionic-angular';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { RssProvider } from '../../providers/rss/rss';
 import { ReadPage } from '../read/read';
+import rssjson from 'rss-to-json';
 
 @Component({
   selector: 'page-mgtv',
@@ -11,6 +12,7 @@ import { ReadPage } from '../read/read';
 })
 export class MgtvPage {
 
+  title: any;
   nextOffset: number;
   rssMgtv: any = [];
   offset = '20'; 
@@ -25,10 +27,13 @@ export class MgtvPage {
     this.rss.getMgtv().subscribe(rssFeed => {
       this.rssMgtv = rssFeed;
     });
+
+    rssjson.load()
   }
 
   openRead(rssData) {
-    this.app.getRootNav().push(ReadPage, {rssData: rssData});
+    this.title = 'MGTV';
+    this.app.getRootNav().push(ReadPage, {rssData: rssData, title: this.title});
   }
 
     // Infinity Load method

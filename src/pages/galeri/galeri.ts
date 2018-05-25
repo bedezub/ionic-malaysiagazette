@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, App } from 'ionic-angular';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { RssProvider } from '../../providers/rss/rss';
-import { ReadPage } from '../read/read';
+import { ReadGaleriPage } from '../read-galeri/read-galeri';
 
 @Component({
   selector: 'page-galeri',
@@ -11,6 +11,7 @@ import { ReadPage } from '../read/read';
 })
 export class GaleriPage {
 
+  title: any;
   nextOffset: number;
   rssGaleri: any = [];
   offset = '20';
@@ -28,7 +29,8 @@ export class GaleriPage {
   }
 
   openRead(rssData) {
-    this.app.getRootNav().push(ReadPage, {rssData: rssData});
+    this.title = 'Galeri';
+    this.app.getRootNav().push(ReadGaleriPage, {rssData: rssData, title: this.title});
   }
 
   // Infinity Load method

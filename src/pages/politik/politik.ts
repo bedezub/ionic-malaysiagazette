@@ -11,6 +11,7 @@ import { ReadPage } from '../read/read';
 })
 export class PolitikPage {
 
+  title: string;
   nextOffset: number;
   rssPolitik: any = [];
   offset = '20';
@@ -28,7 +29,8 @@ export class PolitikPage {
   }
 
   openRead(rssData) {
-    this.app.getRootNav().push(ReadPage, {rssData: rssData});
+    this.title = 'Politik';
+    this.app.getRootNav().push(ReadPage, {rssData: rssData, title: this.title});
   }
 
   // Infinity Load method

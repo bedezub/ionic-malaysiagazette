@@ -11,6 +11,7 @@ import { HttpParams, HttpClient } from '@angular/common/http';
 })
 export class NasionalPage {
 
+  title: string;
   nextOffset: any;
   rssNasional: any = [];
   offset = '20';
@@ -28,7 +29,8 @@ export class NasionalPage {
   }
 
   openRead(rssData) {
-    this.app.getRootNav().push(ReadPage, {rssData: rssData});
+    this.title = 'Nasional';
+    this.app.getRootNav().push(ReadPage, {rssData: rssData, title: this.title});
   }
 
   // Infinity Load method

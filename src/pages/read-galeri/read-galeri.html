@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar style="background-color: #0f0f0f !important; color: #ffffff;">
+        <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+  <div id="invisible" [innerHTML]="rssData.content.rendered"></div>
+  <ion-slides>
+    <ion-slide *ngFor="let image of images" >
+      <img src="{{image.childNodes[0].currentSrc}}"/>
+      <div class="caption" [innerHTML]="image.childNodes[1].innerHTML"></div>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>
