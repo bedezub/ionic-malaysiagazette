@@ -28,11 +28,6 @@ export class OfflinePage {
     this.navCtrl.push(ReadOfflinePage, {rssData: offline});
     console.log('Push RSS to Read', offline);
   }
-  
-  dismiss() {
-    this.navCtrl.setRoot(TabsPage);
-    this.navCtrl.popToRoot();
-  }
 
   ionViewDidLoad() {
 

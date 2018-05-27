@@ -3,11 +3,6 @@
 
   <ion-navbar color="theme">
     <ion-title>Bacaan Offline</ion-title>
-    <ion-buttons left>
-        <button ion-button icon-only class="backButton" (click)="dismiss()">
-        <ion-icon name="arrow-back"></ion-icon>
-    </button>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -16,15 +11,15 @@
   <ion-list>
       <div class ="feed" *ngFor="let offline of offlines?.slice().reverse()">
         <div class="feed-main" (click)="openRead(offline)">
-        <div *ngIf="offline._embedded['wp:featuredmedia'] != null"><img src="{{offline._embedded['wp:featuredmedia']['0'].source_url}}" style="width:auto;height:auto"/></div>
-        <h6 class="feedTitle"><div [innerHTML]="offline.title.rendered"></div></h6>
+        <div *ngIf="offline._embedded['wp:featuredmedia'] != null"><img class="feed-image" src="{{offline._embedded['wp:featuredmedia']['0'].source_url}}" style="width:auto;height:auto"/></div>
+        <h6 class="feed-title"><div [innerHTML]="offline.title.rendered"></div></h6>
         </div>
     
         <ion-row>
             <ion-item style="padding-left: 0%;" class="details-box">
                 <ion-col class="details"center text-left>
-                <div class="detailsDate"><p class="details">{{offline.date_gmt | momentjs}}</p></div>
-                <div class="detailsIcon" (click)="deleteRss(offline)"><ion-icon md="ios-trash-outline" ios="ios-trash-outline" class="icon"></ion-icon></div>
+                <div class="details-date"><p class="details">{{offline.date_gmt | momentjs}}</p></div>
+                <div class="details-icon" (click)="deleteRss(offline)"><ion-icon md="ios-trash-outline" ios="ios-trash-outline" class="icon"></ion-icon></div>
                 </ion-col>
             </ion-item>
         </ion-row>

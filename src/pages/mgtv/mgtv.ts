@@ -4,7 +4,6 @@ import { NavController, NavParams, App } from 'ionic-angular';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { RssProvider } from '../../providers/rss/rss';
 import { ReadPage } from '../read/read';
-import rssjson from 'rss-to-json';
 
 @Component({
   selector: 'page-mgtv',
@@ -27,8 +26,6 @@ export class MgtvPage {
     this.rss.getMgtv().subscribe(rssFeed => {
       this.rssMgtv = rssFeed;
     });
-
-    rssjson.load()
   }
 
   openRead(rssData) {
