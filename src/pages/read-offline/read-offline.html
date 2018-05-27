@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar color="theme">
+    <div><ion-title>Bacaan Offline</ion-title></div>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="deleteRss(rssData)"><div class="detailsIcon"><ion-icon md="ios-trash-outline" ios="ios-trash-outline" class="icon"></ion-icon></div></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content>
+  <div><h4 class="detailsTitle" [innerHTML]="rssData.title.rendered"></h4></div>
+  <div *ngIf="rssData._embedded['wp:featuredmedia'] != null"><img class="feed-image" src="{{rssData._embedded['wp:featuredmedia']['0'].source_url}}" /></div>
+</ion-content>

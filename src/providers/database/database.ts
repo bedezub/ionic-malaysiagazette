@@ -1,17 +1,26 @@
+// Written by Dr. Zub
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
-/*
-  Generated class for the DatabaseProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DatabaseProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello DatabaseProvider Provider');
+  offline: any = [];
+
+  constructor(
+    public http: HttpClient,
+    public storage: Storage
+  ) {
+  }
+
+  getRss(offline) {
+    this.offline.push(offline);
+    this.storage.set('offlineRead', this.offline);
+  }
+
+  passRss() {
+    return this.storage.get('offlineRead');
   }
 
 }
