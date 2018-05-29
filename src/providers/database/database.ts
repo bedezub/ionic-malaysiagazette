@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { ToastProvider } from '../toast/toast';
 
 @Injectable()
 export class DatabaseProvider {
@@ -10,13 +11,21 @@ export class DatabaseProvider {
 
   constructor(
     public http: HttpClient,
-    public storage: Storage
+    public storage: Storage,
+    public toast: ToastProvider
   ) {
   }
 
   getRss(offline) {
     this.offline.push(offline);
     this.storage.set('offlineRead', this.offline);
+  }
+
+  deleteRss(offline) {
+    console.log('Received', offline);
+    this.offline = offline;
+    this.storage.set('offlineRead', this.offline);
+    this.passRss();
   }
 
   passRss() {

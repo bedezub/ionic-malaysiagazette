@@ -28,20 +28,24 @@ export class MyApp {
 
     this.pages = [
       { title: 'Bacaan Offline', component: OfflinePage, icon: 'ios-bookmark-outline', id: '8' },
-      // { title: 'Utama', component: TabsPage, icon: 'ios-home-outline', id: '0'  },
-      // { title: 'Berita', component: TabsPage, icon: 'ios-paper-outline', id: '1' },
-      // { title: 'Analisis', component: TabsPage, icon: 'ios-pie-outline', id: '2' },
-      // { title: 'Video', component: TabsPage, icon: 'ios-videocam-outline', id: '3' },
-      // { title: 'Infografik', component: TabsPage, icon: 'ios-image-outline', id: '4' },
-      // { title: 'Galeri', component: TabsPage, icon: 'ios-images-outline', id: '5' },
-      // { title: 'Soundtrack', component: TabsPage, icon: 'ios-musical-notes-outline', id: '6' },
-      // { title: 'Surat Pembaca', component: TabsPage, icon: 'ios-people-outline', id: '7' }
+      { title: 'Utama', component: TabsPage, icon: 'ios-home-outline', id: '0'  },
+      { title: 'Nasional', component: TabsPage, icon: 'custom-malaysia', id: '1' },
+      { title: 'Politik', component: TabsPage, icon: 'ios-people-outline', id: '2' },
+      { title: 'Ekonomi', component: TabsPage, icon: 'ios-trending-up-outline', id: '3' },
+      { title: 'Dunia', component: TabsPage, icon: 'custom-earth', id: '4' },
+      { title: 'Seni Hidup', component: TabsPage, icon: 'custom-seni', id: '5' },
+      { title: 'Akhbar Cina', component: TabsPage, icon: 'ios-paper-outline', id: '6' },
+      { title: 'MGTV', component: TabsPage, icon: 'ios-desktop-outline', id: '7' },
+      { title: 'Galeri', component: TabsPage, icon: 'ios-images-outline', id: '8' }
     ];
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.push(page.component, {page: page.id});
+  openTabs(page) {
+    if(page.id === '8') {
+      console.log(page.id);
+      this.nav.push(page.component, {page: page.id});
+    } else {
+      this.nav.setRoot(page.component, {page: page.id});
+    }
   }
 }

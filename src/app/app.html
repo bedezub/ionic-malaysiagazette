@@ -3,11 +3,11 @@
         <div>
             <h6 class="menuTitle">Kategori</h6>
             <div class="menu-content">
-              <ion-item no-lines menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-                {{p.title}}
-                <ion-icon [ios]="p.icon" [md]="p.icon" item-left></ion-icon>
-                {{ p.name }}
-              </ion-item>
+                <ion-item no-lines menuClose ion-item *ngFor="let p of pages" (click)="openTabs(p)">
+                    {{p.title}}
+                    <ion-icon [ios]="p.icon" [md]="p.icon" name="p.icon" item-left></ion-icon>
+                    {{ p.name }}
+                </ion-item>
             </div>
         </div>
     </ion-content>

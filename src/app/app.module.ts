@@ -32,10 +32,10 @@ import { SeniPage } from '../pages/seni/seni';
 // Providers
 import { DatabaseProvider } from '../providers/database/database';
 import { RssProvider } from '../providers/rss/rss';
+import { ToastProvider } from '../providers/toast/toast';
 
 // Pipes
 import { MomentjsPipe } from '../pipes/momentjs/momentjs';
-
 
 @NgModule({
   declarations: [
@@ -93,7 +93,8 @@ import { MomentjsPipe } from '../pipes/momentjs/momentjs';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
     RssProvider,
-    DatabaseProvider
+    DatabaseProvider,
+    ToastProvider
   ]
 })
 export class AppModule {}

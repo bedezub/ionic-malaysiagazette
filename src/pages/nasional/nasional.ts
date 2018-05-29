@@ -1,9 +1,10 @@
 // Written by Dr. Zub
 import { Component } from '@angular/core';
-import { NavController, NavParams, App } from 'ionic-angular';
+import { NavController, NavParams, App, ToastController } from 'ionic-angular';
 import { RssProvider } from '../../providers/rss/rss';
 import { ReadPage } from '../read/read';
 import { HttpParams, HttpClient } from '@angular/common/http';
+import { DatabaseProvider } from '../../providers/database/database';
 
 @Component({
   selector: 'page-nasional',
@@ -22,6 +23,8 @@ export class NasionalPage {
     public rss: RssProvider,
     public app: App,
     public http: HttpClient,
+    public toast: ToastController,
+    public database: DatabaseProvider
   ) {
     this.rss.getNasional().subscribe(rssFeed => {
       this.rssNasional = rssFeed;
@@ -51,6 +54,19 @@ export class NasionalPage {
         load.complete();
       }
     });
+  }
+
+  // Offline reading functionality
+  saveRss(rssData) {    
+    let offline = rssData;
+    let saveRss = this.toast.create({
+      message: 'Artikel disimpan untuk bacaan offline',
+      duration: 3000,
+      position: 'bottom',
+    });
+    saveRss.present();
+    console.log('Entering database', offline);
+    return this.database.getRss(offline);
   }
 
   ionViewDidLoad() {

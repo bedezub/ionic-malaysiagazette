@@ -19,6 +19,30 @@
     background-color: #ffffff !important;
 }
 
+ion-icon {
+    &[class*="custom-"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        width: 0.8em;
+        height: 0.8em;
+    }
+
+    &[class*="custom-earth"] {
+    mask-image: url(../assets/icon/earth.svg);
+    }
+
+    &[class*="custom-seni"] {
+    mask-image: url(../assets/icon/seni.svg);
+    }
+
+    &[class*="custom-malaysia"] {
+    mask-image: url(../assets/icon/malaysia.svg);
+    }
+}
 .menuTitle {
     margin-top: 20px;
     margin-left: 0%;

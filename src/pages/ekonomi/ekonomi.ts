@@ -1,9 +1,10 @@
 // Written by Dr. Zub
 import { Component } from '@angular/core';
-import { NavController, NavParams, App } from 'ionic-angular';
+import { NavController, NavParams, App, ToastController } from 'ionic-angular';
 import { RssProvider } from '../../providers/rss/rss';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { ReadPage } from '../read/read';
+import { DatabaseProvider } from '../../providers/database/database';
 
 @Component({
   selector: 'page-ekonomi',
@@ -21,7 +22,9 @@ export class EkonomiPage {
     public navParams: NavParams,
     public rss: RssProvider,
     public app: App,
-    public http: HttpClient
+    public http: HttpClient,
+    public toast: ToastController,
+    public database: DatabaseProvider
   ) {
     this.rss.getEkonomi().subscribe(rssFeed => {
       this.rssEkonomi = rssFeed;
@@ -51,6 +54,19 @@ export class EkonomiPage {
         load.complete();
       }
     });
+  }
+
+  // Offline reading functionality
+  saveRss(rssData) {    
+    let offline = rssData;
+    let saveRss = this.toast.create({
+      message: 'Artikel disimpan untuk bacaan offline',
+      duration: 3000,
+      position: 'bottom',
+    });
+    saveRss.present();
+    console.log('Entering database', offline);
+    return this.database.getRss(offline);
   }
 
   ionViewDidLoad() {

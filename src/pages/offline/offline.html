@@ -8,22 +8,23 @@
 </ion-header>
 
 <ion-content full style="background-color: #dcdcdc">
-  <ion-list>
-      <div class ="feed" *ngFor="let offline of offlines?.slice().reverse()">
-        <div class="feed-main" (click)="openRead(offline)">
-        <div *ngIf="offline._embedded['wp:featuredmedia'] != null"><img class="feed-image" src="{{offline._embedded['wp:featuredmedia']['0'].source_url}}" style="width:auto;height:auto"/></div>
-        <h6 class="feed-title"><div [innerHTML]="offline.title.rendered"></div></h6>
-        </div>
-    
-        <ion-row>
-            <ion-item style="padding-left: 0%;" class="details-box">
-                <ion-col class="details"center text-left>
-                <div class="details-date"><p class="details">{{offline.date_gmt | momentjs}}</p></div>
-                <div class="details-icon" (click)="deleteRss(offline)"><ion-icon md="ios-trash-outline" ios="ios-trash-outline" class="icon"></ion-icon></div>
-                </ion-col>
-            </ion-item>
-        </ion-row>
-        <div class="border"></div>
-        </div>
-    </ion-list>
+    <p class="empty" *ngIf="offlines.length === 0">Tiada sebarang bacaan offline, sila klik butang  <ion-icon md="ios-bookmark-outline" ios="ios-bookmark-outline" class="icon"></ion-icon>  untuk menyimpan bacaan.</p>
+    <ion-list>
+        <div class ="feed" *ngFor="let offline of offlines?.slice().reverse()">
+            <div class="feed-main" (click)="openRead(offline)">
+            <div *ngIf="offline._embedded['wp:featuredmedia'] != null"><img class="feed-image" src="{{offline._embedded['wp:featuredmedia']['0'].source_url}}" style="width:auto;height:auto"/></div>
+            <h6 class="feed-title"><div [innerHTML]="offline.title.rendered"></div></h6>
+            </div>
+        
+            <ion-row>
+                <ion-item style="padding-left: 0%;" class="details-box">
+                    <ion-col class="details"center text-left>
+                    <div class="details-date"><p class="details">{{offline.date_gmt | momentjs}}</p></div>
+                    <div class="details-icon" (click)="deleteRss(offline)"><ion-icon md="ios-trash-outline" ios="ios-trash-outline" class="icon"></ion-icon></div>
+                    </ion-col>
+                </ion-item>
+            </ion-row>
+            <div class="border"></div>
+            </div>
+        </ion-list>
 </ion-content>

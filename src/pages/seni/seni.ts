@@ -1,9 +1,10 @@
 // Written by Dr. Zub
 import { Component } from '@angular/core';
-import { NavController, NavParams, App } from 'ionic-angular';
+import { NavController, NavParams, App, ToastController } from 'ionic-angular';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { RssProvider } from '../../providers/rss/rss';
 import { ReadPage } from '../read/read';
+import { DatabaseProvider } from '../../providers/database/database';
 
 @Component({
   selector: 'page-seni',
@@ -21,7 +22,9 @@ export class SeniPage {
     public navParams: NavParams,
     public rss: RssProvider,
     public http: HttpClient,
-    public app: App
+    public app: App,
+    public toast: ToastController,
+    public database: DatabaseProvider
   ) {
     this.rss.getSeni().subscribe(rssFeed => {
       this.rssSeni = rssFeed;
@@ -51,6 +54,19 @@ export class SeniPage {
         load.complete();
       }
     });
+  }
+
+  // Offline reading functionality
+  saveRss(rssData) {    
+    let offline = rssData;
+    let saveRss = this.toast.create({
+      message: 'Artikel disimpan untuk bacaan offline',
+      duration: 3000,
+      position: 'bottom',
+    });
+    saveRss.present();
+    console.log('Entering database', offline);
+    return this.database.getRss(offline);
   }
 
   ionViewDidLoad() {

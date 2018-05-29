@@ -18,6 +18,7 @@ import { GaleriPage } from '../galeri/galeri';
 })
 export class TabsPage {
 
+  id: any;
   tabs: { root: Page; title: string; }[];
   tab1Root = HomePage;
   tab2Root = NasionalPage;
@@ -33,6 +34,14 @@ export class TabsPage {
     public navCtrl: NavController, 
     public navParams: NavParams
   ) {
+
+    if(!this.id) {
+      this.id = this.navParams.get('page');
+    } else 
+    if (this.id === null) {
+      this.id = 0;
+    }
+    
     this.tabs = [
       {root: this.tab1Root, title: "Utama"},
       {root: this.tab2Root, title: "Nasional"},
