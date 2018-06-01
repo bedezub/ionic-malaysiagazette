@@ -1,0 +1,21 @@
+<!-- Written by Dr. Zub -->
+<ion-content padding>
+  <ion-navbar>
+    <div><h6 style="text-align: center; margin-bottom: 0px; color: #ffffff;">Hubungi Kami</h6></div>
+  </ion-navbar>
+  <div>
+    <ion-item>
+        <ion-label color="primary" stacked>Subjek</ion-label>
+        <ion-input [(ngModel)]="subject" type="text" placeholder="Subjek"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary" stacked>Kandungan</ion-label>
+        <ion-input [(ngModel)]="body" type="text" placeholder="Kandungan"></ion-input>
+    </ion-item>
+    <ion-item style="padding-bottom: 20px">
+        <ion-label color="primary" stacked>Untuk</ion-label>
+        <ion-input readonly [(ngModel)]="to" type="email" placeholder="editor@malaysiagazette.com">editor@malaysiagazette.com</ion-input>
+      </ion-item>
+      <button ion-button block (click)="send()">Hantar</button>
+  </div>
+</ion-content>

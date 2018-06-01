@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { RssProvider } from '../../providers/rss/rss';
 import { ReadGaleriPage } from '../read-galeri/read-galeri';
 import { DatabaseProvider } from '../../providers/database/database';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'page-galeri',
@@ -25,7 +26,8 @@ export class GaleriPage {
     public app: App,
     public http: HttpClient,
     public toast: ToastController,
-    public database: DatabaseProvider
+    public database: DatabaseProvider,
+    public socialSharing: SocialSharing
   ) {
     this.rss.getGaleri().subscribe(rssFeed => {
       this.rssGaleri = rssFeed;
@@ -68,6 +70,20 @@ export class GaleriPage {
     saveRss.present();
     console.log('Entering database', offline);
     return this.database.getRss(offline);
+  }  
+
+  shareRss(rssData) {
+    var options = {
+      message: '',
+      subject: '',
+      url: rssData.link,
+      chooserTitle: 'Kongsi artikel' // Android only, you can override the default share sheet title
+    }
+    this.socialSharing.shareWithOptions(options).then((res) => {
+      console.log('Success!');
+    }).catch(() => {
+      console.log('Error!');
+    });
   }  
 
   ionViewDidLoad() {

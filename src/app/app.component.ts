@@ -3,9 +3,13 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { TabsPage } from '../pages/tabs/tabs';
 import { OfflinePage } from '../pages/offline/offline';
+import { Device } from '@ionic-native/device';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { AppAvailability } from '@ionic-native/app-availability';
+import { AboutPage } from '../pages/about/about';
+import { PreferencePage } from '../pages/preference/preference';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +23,9 @@ export class MyApp {
   constructor(
     platform: Platform, 
     statusBar: StatusBar, 
-    splashScreen: SplashScreen
+    splashScreen: SplashScreen,
+    private appAvailability: AppAvailability,
+    private device: Device,
   ) {
     platform.ready().then(() => {
       statusBar.styleDefault();
@@ -40,6 +46,30 @@ export class MyApp {
     ];
   }
 
+  launchExternalApp(iosSchemaName: string, androidPackageName: string, appUrl: string, httpUrl: string, username: string) {
+    let app: string;
+    if (this.device.platform === 'iOS') {
+      app = iosSchemaName;
+    } else if (this.device.platform === 'Android') {
+      app = androidPackageName;
+    } else {
+      let browser = new InAppBrowser();
+      browser.create(httpUrl + username, '_system')
+      return;
+    }
+  
+    this.appAvailability.check(app).then(
+      () => { // success callback
+        let browser = new InAppBrowser();
+        browser.create(httpUrl + username, '_system')
+      },
+      () => { // error callback
+        let browser = new InAppBrowser();
+        browser.create(httpUrl + username, '_system')
+      }
+    );
+  }
+
   openTabs(page) {
     if(page.id === '8') {
       console.log(page.id);
@@ -48,4 +78,33 @@ export class MyApp {
       this.nav.setRoot(page.component, {page: page.id});
     }
   }
+
+  openInstagram() {
+    let username = 'malaysiagazette';
+    this.launchExternalApp('instagram://', 'com.instagram.android', 'instagram://user?username=', 'https://www.instagram.com/', username);
+  }
+  
+  openTwitter() {
+    let username = 'malaysiagazette';
+    this.launchExternalApp('twitter://', 'com.twitter.android', 'twitter://user?screen_name=', 'https://twitter.com/', username);
+  }
+  
+  openFacebook() {
+    let username = 'MalaysiaGazette';
+    this.launchExternalApp('fb://', 'com.facebook.katana', 'fb://page/', 'https://www.facebook.com/', username);
+  }
+
+  openYoutube() {
+    let username = 'UC-zwAo_0PsviX7-H71mbHYg';
+    this.launchExternalApp('youtube://', 'com.google.android.youtube', 'youtube://channel/', 'https://www.youtube.com/channel/', username);
+  }
+
+  openAbout() {
+    this.nav.push(AboutPage);
+  }
+
+  openPreference() {
+    this.nav.push(PreferencePage);
+  }
+
 }

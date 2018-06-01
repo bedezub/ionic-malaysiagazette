@@ -1,7 +1,7 @@
 <!-- Written by Dr. Zub -->
 <ion-header no-border>
-  <ion-navbar>
-    <button ion-button menuToggle>
+  <ion-navbar color="white">
+    <button ion-button menuToggle color="theme">
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title text-center>
@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-    <super-tabs class="supertabs" selectedTabIndex="{{id}}" scrollTabs="true" toolbarBackground="white" indicatorColor="primary">
+    <super-tabs class="supertabs" selectedTabIndex="{{id}}" scrollTabs="true" toolbarBackground="white" toolbarColor="dark" indicatorColor="theme">
         <super-tab *ngFor="let tab of tabs" [root]="tab.root" [title]="tab.title"></super-tab>
     </super-tabs>
 </ion-content>

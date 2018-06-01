@@ -1,10 +1,11 @@
 // Written by Dr. Zub
 import { Component } from '@angular/core';
-import { NavController, App, ToastController } from 'ionic-angular';
+import { NavController, App, ToastController, ModalController } from 'ionic-angular';
 import { RssProvider } from '../../providers/rss/rss';
 import { ReadPage } from '../read/read';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { DatabaseProvider } from '../../providers/database/database';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'page-home',
@@ -23,7 +24,9 @@ export class HomePage {
     public app: App,
     public http: HttpClient,
     public toast: ToastController,
-    public database: DatabaseProvider
+    public database: DatabaseProvider,
+    public modalCtrl: ModalController,
+    public socialSharing: SocialSharing
   ) {
     this.rss.getUtama().subscribe(rssFeed => {
       this.rssUtama = rssFeed;
@@ -52,6 +55,20 @@ export class HomePage {
         this.offset = this.nextOffset.toString();
         load.complete();
       }
+    });
+  }
+
+  shareRss(rssData) {
+    var options = {
+      message: '',
+      subject: '',
+      url: rssData.link,
+      chooserTitle: 'Kongsi artikel' // Android only, you can override the default share sheet title
+    }
+    this.socialSharing.shareWithOptions(options).then((res) => {
+      console.log('Success!');
+    }).catch(() => {
+      console.log('Error!');
     });
   }
 

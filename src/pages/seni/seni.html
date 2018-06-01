@@ -9,8 +9,9 @@
             <ion-row>
                 <ion-item style="padding-left: 0%;" class="details-box">
                     <ion-col class="details"center text-left>
-                    <div class="details-date"><p class="details">{{rssData.date | momentjs}}</p></div>
-                    <div class="details-icon" (click)="saveRss(rssData)"><ion-icon md="ios-bookmark-outline" ios="ios-bookmark-outline" class="icon"></ion-icon></div>
+                        <div class="details-date"><p class="details">{{rssData.date | momentjs}}</p></div>
+                        <div class="details-icon" (click)="saveRss(rssData)"><ion-icon md="ios-bookmark-outline" ios="ios-bookmark-outline" class="icon"></ion-icon></div>
+                        <div class="details-icon" (click)="shareRss(rssData)"><ion-icon name="custom-share" class="icon"></ion-icon></div>
                     </ion-col>
                 </ion-item>
             </ion-row>

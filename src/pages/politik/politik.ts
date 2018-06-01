@@ -5,6 +5,7 @@ import { RssProvider } from '../../providers/rss/rss';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ReadPage } from '../read/read';
 import { DatabaseProvider } from '../../providers/database/database';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'page-politik',
@@ -24,7 +25,8 @@ export class PolitikPage {
     public http: HttpClient,
     public app: App,
     public toast: ToastController,
-    public database: DatabaseProvider
+    public database: DatabaseProvider,
+    public socialSharing: SocialSharing
   ) {
     this.rss.getPolitik().subscribe(rssFeed => {
       this.rssPolitik = rssFeed;
@@ -67,6 +69,20 @@ export class PolitikPage {
     saveRss.present();
     console.log('Entering database', offline);
     return this.database.getRss(offline);
+  }
+
+  shareRss(rssData) {
+    var options = {
+      message: '',
+      subject: '',
+      url: rssData.link,
+      chooserTitle: 'Kongsi artikel' // Android only, you can override the default share sheet title
+    }
+    this.socialSharing.shareWithOptions(options).then((res) => {
+      console.log('Success!');
+    }).catch(() => {
+      console.log('Error!');
+    });
   }
 
   ionViewDidLoad() {

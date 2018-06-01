@@ -1,14 +1,14 @@
 <!-- Written by Dr. Zub -->
 <ion-header>
 
-  <ion-navbar color="theme">
+  <ion-navbar>
     <ion-title>Bacaan Offline</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content full style="background-color: #dcdcdc">
-    <p class="empty" *ngIf="offlines.length === 0">Tiada sebarang bacaan offline, sila klik butang  <ion-icon md="ios-bookmark-outline" ios="ios-bookmark-outline" class="icon"></ion-icon>  untuk menyimpan bacaan.</p>
+    <p class="empty" *ngIf="offlines === null || offlines.length === 0">Tiada sebarang bacaan offline, sila klik butang  <ion-icon md="ios-bookmark-outline" ios="ios-bookmark-outline" class="icon"></ion-icon>  untuk menyimpan bacaan.</p>
     <ion-list>
         <div class ="feed" *ngFor="let offline of offlines?.slice().reverse()">
             <div class="feed-main" (click)="openRead(offline)">

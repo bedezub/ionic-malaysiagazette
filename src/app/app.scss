@@ -16,7 +16,11 @@
 // automatically applied to the <body> element in the app.
 
 .toolbar-background {
-    background-color: #ffffff !important;
+    background-color: #EF021C;
+}
+
+.toolbar-title, .back-button {
+    color: #ffffff;
 }
 
 ion-icon {
@@ -42,13 +46,28 @@ ion-icon {
     &[class*="custom-malaysia"] {
     mask-image: url(../assets/icon/malaysia.svg);
     }
+
+    &[class*="custom-share"] {
+    mask-image: url(../assets/icon/share.svg);
+    width: 1em !important;
+    height: 0.9em !important;
+    }
 }
-.menuTitle {
+.menu-title {
     margin-top: 20px;
     margin-left: 0%;
     margin-bottom: 5px;
     padding-left: 17px;
     color: #9E9E9E;
+}
+
+.menu-icon {
+    // margin-right: 2em !important;
+    width: 1.4em;
+}
+
+.menu-content {
+    border-bottom: 0.5px solid #e5e5e5;
 }
 
 .background {
@@ -84,11 +103,19 @@ ion-icon {
 .feed-title {
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .feed {
     margin-bottom: 1em;
     background-color: #ffffff;
+}
+
+.feed-image {
+    display: block;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .content-title {
@@ -99,5 +126,19 @@ ion-icon {
 .content-description {
     padding-left: 16px;
     padding-right: 16px;
+}
+
+ion-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    ion-content.content{
+        top: 20%;
+        left: 10%;
+        width: 80%;
+        height: 51%;
+        border-radius: 10px;
+        .scroll-content {
+            border-radius: 20px;
+        }
+    }
 }
 

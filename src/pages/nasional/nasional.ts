@@ -5,6 +5,7 @@ import { RssProvider } from '../../providers/rss/rss';
 import { ReadPage } from '../read/read';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { DatabaseProvider } from '../../providers/database/database';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'page-nasional',
@@ -24,7 +25,8 @@ export class NasionalPage {
     public app: App,
     public http: HttpClient,
     public toast: ToastController,
-    public database: DatabaseProvider
+    public database: DatabaseProvider,
+    public socialSharing: SocialSharing
   ) {
     this.rss.getNasional().subscribe(rssFeed => {
       this.rssNasional = rssFeed;
@@ -67,6 +69,20 @@ export class NasionalPage {
     saveRss.present();
     console.log('Entering database', offline);
     return this.database.getRss(offline);
+  }
+
+  shareRss(rssData) {
+    var options = {
+      message: '',
+      subject: '',
+      url: rssData.link,
+      chooserTitle: 'Kongsi artikel' // Android only, you can override the default share sheet title
+    }
+    this.socialSharing.shareWithOptions(options).then((res) => {
+      console.log('Success!');
+    }).catch(() => {
+      console.log('Error!');
+    });
   }
 
   ionViewDidLoad() {

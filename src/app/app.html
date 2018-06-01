@@ -1,7 +1,7 @@
 <ion-menu [content]="mycontent">
     <ion-content>
         <div>
-            <h6 class="menuTitle">Kategori</h6>
+            <h6 class="menu-title">Kategori</h6>
             <div class="menu-content">
                 <ion-item no-lines menuClose ion-item *ngFor="let p of pages" (click)="openTabs(p)">
                     {{p.title}}
@@ -9,6 +9,33 @@
                     {{ p.name }}
                 </ion-item>
             </div>
+            <h6 class="menu-title">Media Sosial</h6>
+            <div style="border-bottom: 0.3px solid #e5e5e5 !important;">
+              <ion-item no-lines menuClose ion-item (click)="openYoutube()">
+                  YouTube
+                  <img class="menu-icon" src="assets/imgs/social-youtube-outline.png" item-left>
+              </ion-item>
+              <ion-item no-lines menuClose ion-item (click)="openTwitter()">
+                  Twitter
+                <img class="menu-icon" src="assets/imgs/social-twitter-outline.png" item-left>
+              </ion-item>
+              <ion-item no-lines menuClose ion-item (click)="openInstagram()">
+                  Instagram
+                  <img class="menu-icon" src="assets/imgs/social-instagram-outline.png" item-left>
+              </ion-item>
+              <ion-item style="border-bottom: 0.3px solid #e5e5e5;" no-lines menuClose ion-item (click)="openFacebook()">
+                  Facebook
+                <img class="menu-icon" src="assets/imgs/social-facebook-outline.png" item-left>
+              </ion-item>
+            </div>
+            <ion-item no-lines menuClose ion-item (click)="openPreference()">
+                Penetapan
+                <ion-icon ios="ios-settings-outline" md="ios-settings-outline" item-left></ion-icon>
+            </ion-item>
+            <ion-item no-lines menuClose ion-item (click)="openAbout()">
+                Mengenai Kami
+                <ion-icon ios="ios-information-circle-outline" md="ios-information-circle-outline" item-left></ion-icon>
+            </ion-item>
         </div>
     </ion-content>
 </ion-menu>
